@@ -1,0 +1,19 @@
+---
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: jet-alicloud-config
+  labels:
+    app: crossplane-provider-jet-alicloud
+spec:
+  image: crossplane/provider-jet-alicloud-controller:v0.1.0
+  args: ["-d"]
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: crossplane-provider-jet-alicloud
+spec:
+  package: crossplane/provider-jet-alicloud:v0.1.0
+  controllerConfigRef:
+    name: jet-alicloud-config
